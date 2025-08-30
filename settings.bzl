@@ -18,10 +18,12 @@ RUST_BUILD_FLAGS_PER_ARCH = {
             "-Cpanic=abort",
             "-Copt-level=3",
             "-Cstrip=symbols",
+            "-Clink-arg=-Wl,--no-dynamic-linker",
         ],
         "//conditions:default": [
             "-Ctarget-feature=+crt-static",
             "-Copt-level=0",
+            "-Clink-arg=-Wl,--no-dynamic-linker",
         ],
     }),
     "amd64": select({
@@ -33,10 +35,12 @@ RUST_BUILD_FLAGS_PER_ARCH = {
             "-Cpanic=abort",
             "-Copt-level=3",
             "-Cstrip=symbols",
+            "-Clink-arg=-Wl,--no-dynamic-linker",
         ],
         "//conditions:default": [
             "-Ctarget-feature=+crt-static",
             "-Copt-level=0",
+            "-Clink-arg=-Wl,--no-dynamic-linker",
         ],
     }),
 }

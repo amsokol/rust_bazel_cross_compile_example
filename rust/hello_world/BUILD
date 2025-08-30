@@ -12,7 +12,7 @@ rust_binary(
     rustc_flags = RUST_BUILD_FLAGS_PER_ARCH["arm64"],
     version = version,
     deps = [
-        # "@cargo//:mimalloc",
+        "@cargo//:mimalloc",
         "@cargo//:tokio",
     ],
 )
@@ -26,7 +26,7 @@ rust_binary(
     rustc_flags = RUST_BUILD_FLAGS_PER_ARCH["amd64"],
     version = version,
     deps = [
-        # "@cargo//:mimalloc",
+        "@cargo//:mimalloc",
         "@cargo//:tokio",
     ],
 )

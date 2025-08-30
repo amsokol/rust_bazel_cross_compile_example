@@ -14,5 +14,5 @@ path = "src/main.rs"
 [dependencies]
 # Internal crates
 # External crates
-# mimalloc = { workspace = true }
+mimalloc = { workspace = true }
 tokio = { workspace = true, features = ["full"] }

@@ -27,14 +27,10 @@ llvm = use_extension("@toolchains_llvm//toolchain/extensions:llvm.bzl", "llvm", 
 llvm.toolchain(
     name = "llvm_toolchain",
     llvm_versions = {
-        "darwin-aarch64": "18.1.8",
-        "linux-aarch64": "18.1.8",
-        "linux-x86_64": "18.1.8",
+        "darwin-aarch64": "19.1.7",
+        "linux-aarch64": "19.1.7",
+        "linux-x86_64": "19.1.7",
     },
-    #    stdlib = {
-    #        "linux-aarch64": "stdc++",
-    #        "linux-x86_64": "stdc++",
-    #    },
 )
 llvm.sysroot(
     name = "llvm_toolchain",
