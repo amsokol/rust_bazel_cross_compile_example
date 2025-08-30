@@ -1,0 +1,85 @@
+"""Configuration for Rust toolchains and dependencies.
+
+This module sets up the Rust toolchain, LLVM toolchain, and required crates
+for Rust service development.
+"""
+
+http_archive = use_repo_rule("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+
+# INTEL/AMD64 Sysroot.
+http_archive(
+    name = "sysroot_linux_amd64",
+    build_file = "//:BUILD.sysroot",
+    sha256 = "c6fcc3a5390028891c97933495b881765cb3fe78b7b3182cfc8a5ba5caab1939",
+    urls = ["https://github.com/amsokol/cross-compilation-sysroots/releases/download/2025-08-24/debian-bookworm-sysroot-amd64.tar.xz"],
+)
+
+# ARM 64 Sysroot.
+http_archive(
+    name = "sysroot_linux_arm64",
+    build_file = "//:BUILD.sysroot",
+    sha256 = "51c69a689328b734a0b4c2e703ad8178edd802de6ac5d9568c32ee58c0b5fc1e",
+    urls = ["https://github.com/amsokol/cross-compilation-sysroots/releases/download/2025-08-24/debian-bookworm-sysroot-arm64.tar.xz"],
+)
+
+# https://github.com/bazel-contrib/toolchains_llvm/blob/master/toolchain/internal/llvm_distributions.bzl
+llvm = use_extension("@toolchains_llvm//toolchain/extensions:llvm.bzl", "llvm", dev_dependency = True)
+llvm.toolchain(
+    name = "llvm_toolchain",
+    llvm_versions = {
+        "darwin-aarch64": "18.1.8",
+        "linux-aarch64": "18.1.8",
+        "linux-x86_64": "18.1.8",
+    },
+    #    stdlib = {
+    #        "linux-aarch64": "stdc++",
+    #        "linux-x86_64": "stdc++",
+    #    },
+)
+llvm.sysroot(
+    name = "llvm_toolchain",
+    label = "@sysroot_linux_amd64//:sysroot",
+    targets = ["linux-x86_64"],
+)
+llvm.sysroot(
+    name = "llvm_toolchain",
+    label = "@sysroot_linux_arm64//:sysroot",
+    targets = ["linux-aarch64"],
+)
+use_repo(llvm, "llvm_toolchain")
+
+register_toolchains(
+    "@llvm_toolchain//:all",
+    dev_dependency = True,
+)
+
+RUST_EDITION = "2024"
+
+RUST_VERSION = "1.89.0"
+
+rust = use_extension("@rules_rust//rust:extensions.bzl", "rust")
+rust.toolchain(
+    edition = RUST_EDITION,
+    extra_target_triples = [
+        "aarch64-unknown-linux-gnu",
+        "x86_64-unknown-linux-gnu",
+    ],
+    versions = [RUST_VERSION],
+)
+use_repo(rust, "rust_toolchains")
+
+register_toolchains("@rust_toolchains//:all")
+
+cargo = use_extension(
+    "@rules_rust//crate_universe:extensions.bzl",
+    "crate",
+)
+cargo.from_cargo(
+    name = "cargo",
+    cargo_lockfile = "//:Cargo.lock",
+    manifests = [
+        "//:Cargo.toml",
+        "rust/hello_world/Cargo.toml",
+    ],
+)
+use_repo(cargo, "cargo")
