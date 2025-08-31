@@ -26,10 +26,12 @@ http_archive(
 llvm = use_extension("@toolchains_llvm//toolchain/extensions:llvm.bzl", "llvm", dev_dependency = True)
 llvm.toolchain(
     name = "llvm_toolchain",
+    # Use LLVM version corresponded to LLVM is embedded into Rust toolchain.
+    # Rust 1.89 embeds LLVM 20.1.7
     llvm_versions = {
-        "darwin-aarch64": "19.1.7",
-        "linux-aarch64": "19.1.7",
-        "linux-x86_64": "19.1.7",
+        "darwin-aarch64": "20.1.8",
+        "linux-aarch64": "20.1.8",
+        "linux-x86_64": "20.1.8",
     },
 )
 llvm.sysroot(
