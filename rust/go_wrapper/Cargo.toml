@@ -11,6 +11,6 @@ crate-type = ["cdylib", "staticlib"]
 
 [dependencies]
 # Internal crates
-core_lib = { path = "../core_lib" }
+core_lib = { workspace = true }
 # External crates
 libc = { workspace = true }

@@ -14,6 +14,7 @@ readme = "README.md"
 
 [workspace.dependencies]
 # Internal crates
+core_lib = { path = "rust/core_lib" }
 # External crates
 mimalloc = "0.1.48"
 tokio = "1.47.1"
