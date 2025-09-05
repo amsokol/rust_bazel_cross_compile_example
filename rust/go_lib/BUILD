@@ -15,9 +15,9 @@ rust_shared_library(
 rust_static_library(
     name = "go_lib_static",
     srcs = ["src/lib.rs"],
-    #    rustc_flags = [
-    #        "-Crelocation-model=pic",
-    #    ],
+    rustc_flags = [
+        "-Crelocation-model=pic",
+    ],
     visibility = ["//visibility:public"],
     deps = [
         "@cargo//:libc",
