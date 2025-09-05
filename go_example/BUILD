@@ -12,19 +12,6 @@ go_binary(
         "//rust/go_wrapper:go_lib_static",
     ],
     cgo = True,
-    clinkopts = [
-        "-fPIC",
-        #        "-static-libgcc",
-    ],
-    copts = [
-        "-fPIC",
-    ],
-    cppopts = [
-        "-fPIC",
-    ],
-    cxxopts = [
-        "-fPIC",
-    ],
     linkmode = "pie",
     pure = "off",
 )
@@ -40,20 +27,6 @@ go_binary(
         "//rust/go_wrapper:go_lib_static",
     ],
     cgo = True,
-    clinkopts = [
-        "-fPIC",
-        #        "-static-libgcc",
-        #        "-Wl,-z,relro,-z,now",
-    ],
-    copts = [
-        "-fPIC",
-    ],
-    cppopts = [
-        "-fPIC",
-    ],
-    cxxopts = [
-        "-fPIC",
-    ],
     linkmode = "pie",
     pure = "off",
 )
