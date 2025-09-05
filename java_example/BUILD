@@ -7,7 +7,10 @@ ARCHS = [
 
 java_library(
     name = "rust_lib",
-    srcs = ["RustLib.java"],
+    srcs = [
+        "Arch.java",
+        "RustLib.java",
+    ],
     visibility = ["//visibility:public"],
 )
 
@@ -26,7 +29,7 @@ java_binary(
         name = "java_example_%s" % arch,
         data = ["//rust/jni_wrapper:jni_lib_%s" % arch],
         jvm_flags = [
-            "-Djava.library.path=rust/jni_wrapper_%s" % arch,
+            "-Djava.library.path=rust/jni_wrapper",
         ],
         main_class = "com.example.rustlib.RustLib",
         runtime_deps = [":rust_lib"],

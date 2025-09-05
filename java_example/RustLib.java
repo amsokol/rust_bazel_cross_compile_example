@@ -1,5 +1,7 @@
 package com.example.rustlib;
 
+import com.example.rustlib.Arch;
+
 /**
  * Java interface to the Rust library functions.
  * Uses JNI to call native Rust functions.
@@ -8,9 +10,9 @@ public class RustLib {
     
     // Load the native library
     static {
-        System.loadLibrary("jni_lib");
+        System.loadLibrary("jni_lib_" + Arch.normalizedArch());
     }
-    
+
     // Basic arithmetic functions
     public static native int addNumbers(int a, int b);
     public static native double multiplyDoubles(double a, double b);
