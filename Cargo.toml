@@ -1,6 +1,11 @@
 [workspace]
 resolver = "2"
-members = ["rust/hello_world", "rust/go_lib", "rust/jni_lib"]
+members = [
+    "rust/hello_world",
+    "rust/core_lib",
+    "rust/go_wrapper",
+    "rust/jni_wrapper",
+]
 
 [workspace.package]
 edition = "2024"

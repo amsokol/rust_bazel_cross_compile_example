@@ -82,15 +82,20 @@ dependencies = [
 ]
 
 [[package]]
+name = "core_lib"
+version = "0.1.0"
+
+[[package]]
 name = "gimli"
 version = "0.31.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "07e28edb80900c19c28f1072f2e8aeca7fa06b23cd4169cefe1af5aa3260783f"
 
 [[package]]
-name = "go_lib"
+name = "go_wrapper"
 version = "0.1.0"
 dependencies = [
+ "core_lib",
  "libc",
 ]
 
@@ -136,10 +141,10 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8eaf4bc02d17cbdd7ff4c7438cafcdf7fb9a4613313ad11b4f8fefe7d3fa0130"
 
 [[package]]
-name = "jni_lib"
+name = "jni_wrapper"
 version = "0.1.0"
 dependencies = [
- "go_lib",
+ "core_lib",
  "jni",
 ]
 

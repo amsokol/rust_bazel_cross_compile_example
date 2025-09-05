@@ -1,0 +1,14 @@
+[package]
+name = "jni_wrapper"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "go_lib"         # Keep the same library name for Java compatibility
+crate-type = ["cdylib"]
+
+[dependencies]
+# Internal crates
+core_lib = { path = "../core_lib" }
+# External crates
+jni = "0.21"

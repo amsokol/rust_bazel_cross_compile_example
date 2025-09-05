@@ -1,15 +1,16 @@
 [package]
-name = "go_lib"
+name = "go_wrapper"
 version = "0.1.0"
 edition.workspace = true
 rust-version.workspace = true
 readme.workspace = true
 
 [lib]
-name = "go_lib"
+name = "go_lib"                      # Keep the same library name for compatibility
 crate-type = ["cdylib", "staticlib"]
 
 [dependencies]
 # Internal crates
+core_lib = { path = "../core_lib" }
 # External crates
 libc = { workspace = true }

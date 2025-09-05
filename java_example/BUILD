@@ -8,9 +8,9 @@ java_library(
 
 java_binary(
     name = "java_example",
-    data = ["//rust/jni_lib:go_lib"],
+    data = ["//rust/jni_wrapper:go_lib"],
     jvm_flags = [
-        "-Djava.library.path=rust/jni_lib",
+        "-Djava.library.path=rust/jni_wrapper",
     ],
     main_class = "com.example.rustlib.RustLib",
     runtime_deps = [":rust_lib"],

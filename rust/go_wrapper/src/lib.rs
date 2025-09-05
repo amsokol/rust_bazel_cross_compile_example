@@ -1,3 +1,6 @@
+/// Go C FFI wrapper for the core library
+/// This module provides C-compatible functions that can be called from Go
+use core_lib;
 use libc::{c_char, c_double, c_int};
 use std::ffi::{CStr, CString};
 
@@ -6,7 +9,7 @@ use std::ffi::{CStr, CString};
 /// This function is safe to call from C/Go
 #[unsafe(no_mangle)]
 pub extern "C" fn add_numbers(a: c_int, b: c_int) -> c_int {
-    a + b
+    core_lib::add_numbers(a, b)
 }
 
 /// Multiply two doubles
@@ -14,7 +17,7 @@ pub extern "C" fn add_numbers(a: c_int, b: c_int) -> c_int {
 /// This function is safe to call from C/Go
 #[unsafe(no_mangle)]
 pub extern "C" fn multiply_doubles(a: c_double, b: c_double) -> c_double {
-    a * b
+    core_lib::multiply_doubles(a, b)
 }
 
 /// Calculate factorial of a number
@@ -22,7 +25,7 @@ pub extern "C" fn multiply_doubles(a: c_double, b: c_double) -> c_double {
 /// This function is safe to call from C/Go
 #[unsafe(no_mangle)]
 pub extern "C" fn factorial(n: c_int) -> c_int {
-    if n <= 1 { 1 } else { (1..=n).product() }
+    core_lib::factorial(n)
 }
 
 /// Check if a number is prime
@@ -30,23 +33,15 @@ pub extern "C" fn factorial(n: c_int) -> c_int {
 /// This function is safe to call from C/Go
 #[unsafe(no_mangle)]
 pub extern "C" fn is_prime(n: c_int) -> c_int {
-    if n < 2 {
-        return 0; // false
-    }
-    if n == 2 {
-        return 1; // true
-    }
-    if n % 2 == 0 {
-        return 0; // false
-    }
+    if core_lib::is_prime(n) { 1 } else { 0 }
+}
 
-    let limit = (n as f64).sqrt() as c_int;
-    for i in (3..=limit).step_by(2) {
-        if n % i == 0 {
-            return 0; // false
-        }
-    }
-    1 // true
+/// Calculate Fibonacci number (iterative approach)
+/// # Safety
+/// This function is safe to call from C/Go
+#[unsafe(no_mangle)]
+pub extern "C" fn fibonacci(n: c_int) -> c_int {
+    core_lib::fibonacci(n)
 }
 
 /// Get length of a string
@@ -60,7 +55,7 @@ pub unsafe extern "C" fn string_length(s: *const c_char) -> c_int {
 
     unsafe {
         match CStr::from_ptr(s).to_str() {
-            Ok(rust_str) => rust_str.len() as c_int,
+            Ok(rust_str) => core_lib::string_length(rust_str),
             Err(_) => -1,
         }
     }
@@ -79,7 +74,7 @@ pub unsafe extern "C" fn reverse_string(s: *const c_char) -> *mut c_char {
     unsafe {
         match CStr::from_ptr(s).to_str() {
             Ok(rust_str) => {
-                let reversed = rust_str.chars().rev().collect::<String>();
+                let reversed = core_lib::reverse_string(rust_str);
                 match CString::new(reversed) {
                     Ok(c_string) => c_string.into_raw(),
                     Err(_) => std::ptr::null_mut(),
@@ -103,27 +98,6 @@ pub unsafe extern "C" fn free_string(s: *mut c_char) {
     }
 }
 
-/// Calculate Fibonacci number (iterative approach)
-/// # Safety
-/// This function is safe to call from C/Go
-#[unsafe(no_mangle)]
-pub extern "C" fn fibonacci(n: c_int) -> c_int {
-    if n <= 1 {
-        return n;
-    }
-
-    let mut a = 0;
-    let mut b = 1;
-
-    for _ in 2..=n {
-        let temp = a + b;
-        a = b;
-        b = temp;
-    }
-
-    b
-}
-
 /// Sum an array of integers
 /// # Safety
 /// The caller must ensure that `arr` points to a valid array of `len` integers
@@ -135,7 +109,7 @@ pub unsafe extern "C" fn sum_array(arr: *const c_int, len: c_int) -> c_int {
 
     unsafe {
         let slice = std::slice::from_raw_parts(arr, len as usize);
-        slice.iter().sum()
+        core_lib::sum_array(slice)
     }
 }
 

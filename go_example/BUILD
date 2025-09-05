@@ -9,7 +9,7 @@ go_binary(
         "main.go",
     ],
     cdeps = [
-        "//rust/go_lib:go_lib_static",
+        "//rust/go_wrapper:go_lib_static",
     ],
     cgo = True,
     clinkopts = [
@@ -37,7 +37,7 @@ go_binary(
         "main.go",
     ],
     cdeps = [
-        "//rust/go_lib:go_lib_static",
+        "//rust/go_wrapper:go_lib_static",
     ],
     cgo = True,
     clinkopts = [
@@ -66,7 +66,7 @@ go_binary(
         "main.go",
     ],
     cdeps = [
-        "//rust/go_lib:go_lib_static",
+        "//rust/go_wrapper:go_lib_static",
     ],
     cgo = True,
     clinkopts = [

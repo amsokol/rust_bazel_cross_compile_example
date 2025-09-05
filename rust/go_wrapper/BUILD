@@ -8,6 +8,7 @@ rust_shared_library(
     srcs = ["src/lib.rs"],
     visibility = ["//visibility:public"],
     deps = [
+        "//rust/core_lib",
         "@cargo//:libc",
     ],
 )
@@ -20,11 +21,12 @@ rust_static_library(
     ],
     visibility = ["//visibility:public"],
     deps = [
+        "//rust/core_lib",
         "@cargo//:libc",
     ],
 )
 
 rust_test(
-    name = "go_lib_test",
+    name = "go_wrapper_test",
     crate = ":go_lib",
 )
