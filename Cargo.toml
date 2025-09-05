@@ -1,6 +1,6 @@
 [workspace]
 resolver = "2"
-members = ["rust/hello_world"]
+members = ["rust/hello_world", "rust/go_lib"]
 
 [workspace.package]
 edition = "2024"
@@ -12,3 +12,4 @@ readme = "README.md"
 # External crates
 mimalloc = "0.1.48"
 tokio = "1.47.1"
+libc = "0.2.175"

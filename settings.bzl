@@ -3,7 +3,7 @@ Module of global project settings.
 """
 
 # Rust toolchains for different architectures.
-RUST_PLATFORMS_PER_ARCH = {
+PLATFORMS_PER_ARCH = {
     "arm64": "//:linux-aarch64",
     "amd64": "//:linux-x86_64",
 }

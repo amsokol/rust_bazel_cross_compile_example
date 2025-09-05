@@ -78,6 +78,7 @@ cargo.from_cargo(
     manifests = [
         "//:Cargo.toml",
         "rust/hello_world/Cargo.toml",
+        "rust/go_lib/Cargo.toml",
     ],
 )
 use_repo(cargo, "cargo")

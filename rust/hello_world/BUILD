@@ -1,5 +1,5 @@
 load("@rules_rust//rust:defs.bzl", "rust_binary")
-load("//:settings.bzl", "RUST_BUILD_FLAGS", "RUST_BUILD_FLAGS_PER_ARCH", "RUST_PLATFORMS_PER_ARCH")
+load("//:settings.bzl", "PLATFORMS_PER_ARCH", "RUST_BUILD_FLAGS", "RUST_BUILD_FLAGS_PER_ARCH")
 
 version = "0.1.0"
 
@@ -29,7 +29,7 @@ rust_binary(
         srcs = [
             "src/main.rs",
         ],
-        platform = RUST_PLATFORMS_PER_ARCH[arch],
+        platform = PLATFORMS_PER_ARCH[arch],
         rustc_flags = RUST_BUILD_FLAGS_PER_ARCH[arch],
         version = version,
         deps = [
