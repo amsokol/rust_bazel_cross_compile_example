@@ -1,7 +1,7 @@
 load("@rules_go//go:def.bzl", "go_binary", "go_cross_binary")
 load("//:settings.bzl", "PLATFORMS_PER_ARCH")
 
-# Go binary for ARM64 - uses normal linkmode
+# Go binary for ARM64 - uses PIE linkmode for cross-compilation compatibility
 go_binary(
     name = "go_example_arm64_bin",
     srcs = [
@@ -14,7 +14,7 @@ go_binary(
     cgo = True,
     clinkopts = [
         "-fPIC",
-        "-static-libgcc",
+        #        "-static-libgcc",
     ],
     copts = [
         "-fPIC",
@@ -25,7 +25,7 @@ go_binary(
     cxxopts = [
         "-fPIC",
     ],
-    linkmode = "normal",
+    linkmode = "pie",
     pure = "off",
 )
 
@@ -42,8 +42,8 @@ go_binary(
     cgo = True,
     clinkopts = [
         "-fPIC",
-        "-static-libgcc",
-        "-Wl,-z,relro,-z,now",
+        #        "-static-libgcc",
+        #        "-Wl,-z,relro,-z,now",
     ],
     copts = [
         "-fPIC",
@@ -71,7 +71,7 @@ go_binary(
     cgo = True,
     clinkopts = [
         "-fPIC",
-        "-static-libgcc",
+        #        "-static-libgcc",
     ],
     copts = [
         "-fPIC",
