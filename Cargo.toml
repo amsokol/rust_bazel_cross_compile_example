@@ -19,3 +19,4 @@ core_lib = { path = "rust/core_lib" }
 mimalloc = "0.1.48"
 tokio = "1.47.1"
 libc = "0.2.175"
+jni = "0.21.1"

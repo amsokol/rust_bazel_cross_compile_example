@@ -1,4 +1,4 @@
-module go_example
+module cross_compile_example
 
 go 1.25.1
 

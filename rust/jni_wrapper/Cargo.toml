@@ -11,4 +11,4 @@ crate-type = ["cdylib"]
 # Internal crates
 core_lib = { workspace = true }
 # External crates
-jni = "0.21"
+jni = { workspace = true }

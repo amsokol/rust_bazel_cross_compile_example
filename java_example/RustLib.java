@@ -8,7 +8,7 @@ public class RustLib {
     
     // Load the native library
     static {
-        System.loadLibrary("go_lib");
+        System.loadLibrary("jni_lib");
     }
     
     // Basic arithmetic functions
