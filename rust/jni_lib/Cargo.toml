@@ -1,0 +1,11 @@
+[package]
+name = "jni_lib"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+jni = "0.21"
+go_lib = { path = "../go_lib" }
+
+[lib]
+crate-type = ["cdylib"]
