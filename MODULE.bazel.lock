@@ -273,11 +273,11 @@
         "usagesDigest": "ozMdCx7KGECG9YjbxIH3fmSLKWZx+r/iLSyFwzLFhVk=",
         "recordedFileInputs": {
           "@@//Cargo.lock": "d926d6d1d6de35a33e8ea22d03cf93c7154137240851bd1e21a4ec08f47af6f2",
-          "@@//Cargo.toml": "299a7fb5fe49bf64f96d6aaacf4505b960f417a0ae91334f31ab3a8f99bf6a6a",
+          "@@//Cargo.toml": "864670e234a29cac89ed5c2c3df398a33587ece9a1693b6f91ae0c3ed45ccd99",
           "@@//rust/core_lib/Cargo.toml": "081662c5d7cd722d9c3539c6c7cf33ee065db841b93af2af34304367ff7d332a",
           "@@//rust/go_wrapper/Cargo.toml": "166e3fd68f306208ce211861090721e785b5714e56d052e6acf80e874d717cd8",
           "@@//rust/hello_world/Cargo.toml": "2421e7e36cb1491a3ac298a0efe45aa6cec707a61bfee161fd1ee7978b709750",
-          "@@//rust/jni_wrapper/Cargo.toml": "0e4ce4aaf309560f39ae5d9b9dd2b8fc92788911381a664b953ff7fb53b94fc0"
+          "@@//rust/jni_wrapper/Cargo.toml": "11cb97615c36eded46de75e5645499ff496c3d2cde93679ec5dcd5f91b4438c7"
         },
         "recordedDirentsInputs": {},
         "envVariables": {
