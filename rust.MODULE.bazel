@@ -10,16 +10,16 @@ http_archive = use_repo_rule("@bazel_tools//tools/build_defs/repo:http.bzl", "ht
 http_archive(
     name = "sysroot_linux_amd64",
     build_file = "//:BUILD.sysroot",
-    sha256 = "c6fcc3a5390028891c97933495b881765cb3fe78b7b3182cfc8a5ba5caab1939",
-    urls = ["https://github.com/amsokol/cross-compilation-sysroots/releases/download/2025-08-24/debian-bookworm-sysroot-amd64.tar.xz"],
+    sha256 = "e13ce24309784a3405616ad355005c331ef5caa9f0f97e7ff42f3be17f2d914f",
+    urls = ["https://github.com/amsokol/cross-compilation-sysroots/releases/download/2025-09-06/debian-bookworm-sysroot-amd64.tar.xz"],
 )
 
 # ARM 64 Sysroot.
 http_archive(
     name = "sysroot_linux_arm64",
     build_file = "//:BUILD.sysroot",
-    sha256 = "51c69a689328b734a0b4c2e703ad8178edd802de6ac5d9568c32ee58c0b5fc1e",
-    urls = ["https://github.com/amsokol/cross-compilation-sysroots/releases/download/2025-08-24/debian-bookworm-sysroot-arm64.tar.xz"],
+    sha256 = "ff250ed47e07548b1d9dc8305ba8971a10f75d856efea494384e3279a7e38d46",
+    urls = ["https://github.com/amsokol/cross-compilation-sysroots/releases/download/2025-09-06/debian-bookworm-sysroot-arm64.tar.xz"],
 )
 
 # https://github.com/bazel-contrib/toolchains_llvm/blob/master/toolchain/internal/llvm_distributions.bzl
